@@ -1,5 +1,30 @@
 import { useState } from "react";
 
+const Anecdote = (props) => {
+  return (
+    <div>
+      <h1>Anecdote of the day</h1>
+      <div>{props.anecdote}</div>
+    </div>
+  );
+};
+const AnecdoteVote = (props) => {
+  return <div>has {props.anecdoteVote} votes</div>;
+};
+
+const MostPopularAnecdote = (props) => {
+  const anecdoteWithMostIndex = props.anecdoteVotes.indexOf(
+    Math.max(...props.anecdoteVotes)
+  );
+  const mostPopularAnecdote = props.anecdotes[anecdoteWithMostIndex];
+  return (
+    <div>
+      <h1>Anecdote with the most votes</h1>
+      <p>{mostPopularAnecdote}</p>
+    </div>
+  );
+};
+
 const App = () => {
   const anecdotes = [
     "If it hurts, do it more often.",
@@ -13,30 +38,31 @@ const App = () => {
   ];
 
   const [selected, setSelected] = useState(0);
-  const [anecdoteVotes, setAncedoteVotes] = useState(
+  const [anecdoteVotes, setAnecdoteVotes] = useState(
     new Array(anecdotes.length).fill(0)
   );
-  // setArtists( // Replace the state
-  // [ // with a new array
-  // ...artists, // that contains all the old items
-  // { id: nextId++, name: name } // and one new item at the end
-  // ]
+
   const handleAnecdoteVote = () => {
     const copy = [...anecdoteVotes];
     copy[selected] += 1;
-    setAncedoteVotes(copy);
+    setAnecdoteVotes(copy);
   };
 
   const handleRandomAnecdoteClick = () => {
     setSelected(Math.round(Math.round(Math.random() * (anecdotes.length - 1))));
   };
+
   return (
     <div>
-      <div>{anecdotes[selected]}</div>
-      <div>has {anecdoteVotes[selected]} votes</div>
+      <Anecdote anecdote={anecdotes[selected]} />
+      <AnecdoteVote anecdoteVote={anecdoteVotes[selected]} />
       <br></br>
       <button onClick={handleAnecdoteVote}>vote</button>
-      <button onClick={handleRandomAnecdoteClick}>next ancedote</button>
+      <button onClick={handleRandomAnecdoteClick}>next anecdote</button>
+      <MostPopularAnecdote
+        anecdotes={anecdotes}
+        anecdoteVotes={anecdoteVotes}
+      />
     </div>
   );
 };
