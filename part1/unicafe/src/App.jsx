@@ -8,6 +8,7 @@ const StatisticRow = (props) => {
     </tr>
   );
 };
+
 const Statistics = (props) => {
   return (
     <>
@@ -52,7 +53,11 @@ const TotalRow = (props) => (
 const AverageRow = (props) => (
   <tr>
     <td>average</td>
-    <td>{(props.good + props.neutral + props.bad) / 3}</td>
+    <td>
+      {Number.parseFloat((props.good + props.neutral + props.bad) / 3).toFixed(
+        2
+      )}
+    </td>
   </tr>
 );
 
@@ -60,9 +65,9 @@ const PositiveRow = (props) => {
   return (
     <tr>
       <td>positive</td>
-      <td>{`${
+      <td>{`${Number.parseFloat(
         (100 * props.good) / (props.good + props.neutral + props.bad)
-      } %`}</td>
+      ).toFixed(2)} %`}</td>
     </tr>
   );
 };
