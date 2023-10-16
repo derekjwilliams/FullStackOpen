@@ -1,10 +1,12 @@
 import Part from "./Part";
-const Content = (props) => (
-  <div>
-    <Part part={props.course.parts[0]} />
-    <Part part={props.course.parts[1]} />
-    <Part part={props.course.parts[2]} />
-  </div>
-);
+const Content = ({ course }) => {
+  return (
+    <ul style={{ listStyle: "none" }}>
+      {course.parts.map((part) => (
+        <Part key={part.id} part={part}></Part>
+      ))}
+    </ul>
+  );
+};
 
 export default Content;

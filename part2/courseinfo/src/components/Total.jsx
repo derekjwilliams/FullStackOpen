@@ -1,10 +1,8 @@
-const Total = (props) => (
-  <p style={{fontWeight: "bold"}}>
-    Number of exercises{" "}
-    {props.course.parts[0].exercises +
-      props.course.parts[1].exercises +
-      props.course.parts[2].exercises}
+const Total = ({course}) => (
+  <p style={{ fontWeight: "bold" }}>
+    Number of exercises {course.parts.reduce((acc, v) => {
+      return acc + v.exercises;
+    }, 0)}
   </p>
 );
-
 export default Total;
