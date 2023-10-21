@@ -8,7 +8,7 @@ const Persons = ({ nameFilter, persons }) => {
           p.name.trim().toLowerCase().includes(castInsensitiveNameFilter)
         )
         .map((person) => (
-          <Person key={person.id} person={person} />
+          <Person key={person.name} person={person} />
         ))}
     </ul>
   );
