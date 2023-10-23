@@ -2,7 +2,7 @@ const CountriesList = ({ countries }) => {
   return (
     <ul style={{ listStyle: 'none' }}>
       {countries.map((country) => (
-        <div key={country.cca3}>{country.name.common}</div>
+        <li key={country.cca3}>{country.name.common}</li>
       ))}
     </ul>
   )
