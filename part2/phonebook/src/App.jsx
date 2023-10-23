@@ -142,7 +142,7 @@ const App = () => {
       <h2>Phonebook</h2>
       <Notification message={notificationMessage} kind={notificationKind}/>
       <Filter
-        filter={nameFilter}
+        nameFilter={nameFilter}
         handleNameFilterChange={handleNameFilterChange}
       />
       <h3>Add a new entry</h3>
