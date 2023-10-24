@@ -1,4 +1,5 @@
 import Languages from './Languages'
+import Weather from './Weather'
 const itemLabel = {
   paddingRight: '0.5rem',
 }
@@ -19,6 +20,12 @@ const CountryInformation = ({ country }) => {
       </div>
       <Languages languages={country.languages}></Languages>
       <div style={flag}>{country?.flag}</div>
+      <div>
+        <h2>weather: </h2>
+        {country.capital.map((city) => (
+          <Weather key={city} city={city} />
+        ))}
+      </div>
     </div>
   )
 }

@@ -1,9 +1,10 @@
 const Filter = ({ countryFilter, countryFilterChange }) => {
   return (
     <div>
-      find countries: <input value={countryFilter} onChange={countryFilterChange} />
+      find countries:{' '}
+      <input value={countryFilter} onChange={countryFilterChange} />
     </div>
-  );
-};
+  )
+}
 
-export default Filter;
+export default Filter
